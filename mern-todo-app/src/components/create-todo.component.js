@@ -6,7 +6,7 @@ export default class CreateTodo extends Component {
     this.state = {
       todo_description: "",
       todo_responsible: "",
-      todo_proirity: "",
+      todo_priority: "",
       todo_completed: false
     };
 
@@ -30,12 +30,12 @@ export default class CreateTodo extends Component {
 
   onChangeTodoPriority(e) {
     this.setState({
-      todo_proirity: e.target.value
+      todo_priority: e.target.value
     });
   }
 
   onSubmit(e) {
-    e.prevenDefault();
+    e.preventDefault();
 
     console.log(`Form submitted:`);
     console.log(`Todo Description: ${this.state.todo_description}`);
@@ -45,7 +45,7 @@ export default class CreateTodo extends Component {
     this.setState({
       todo_description: "",
       todo_responsible: "",
-      todo_proirity: "",
+      todo_priority: "",
       todo_completed: false
     });
   }
