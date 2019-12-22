@@ -16,6 +16,7 @@ class App extends Component {
               class="navbar-brand"
               href="http://danielcseong.com"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img src="https://cdn.onlinewebfonts.com/svg/img_550709.png" width="30" height="30" alt="CodingTheSmartWay.com" />
             </a>
