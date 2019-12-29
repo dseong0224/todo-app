@@ -40,7 +40,7 @@ todoRoutes.route("/:id").get((req, res) => {
   });
 });
 
-todoRoutes.route("/add").get((req, res) => {
+todoRoutes.route("/add").post((req, res) => {
   let todo = new Todo(req.body);
   todo
     .save()
@@ -53,6 +53,27 @@ todoRoutes.route("/add").get((req, res) => {
 
   Todo.findById(id, (err, todo) => {
     res.json(todo);
+  });
+});
+
+todoRoutes.route("/update/:id").post((req, res) => {
+  Todo.findById(req.params.id, (err, todo) => {
+    if (!todo) res.status(404).send("data is not found");
+    else {
+      todo.todo_description = req.body.todo_description;
+      todo.todo_responsible = req.body.todo_responsible;
+      todo.todo_priority = req.body.todo_priority;
+      todo.todo_completed = req.body.todo_completed;
+
+      todo
+        .save()
+        .then(todo => {
+          res.json("Todo updated!");
+        })
+        .catch(err => {
+          res.status(400).send("Update not possible");
+        });
+    }
   });
 });
 
