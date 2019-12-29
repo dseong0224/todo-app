@@ -10,6 +10,8 @@ const PORT = 4000;
 app.use(cors());
 app.use(bodyParser.json());
 
+let Todo = require('./todo.model');
+
 mongoose.connect("mongodb://127.0.0.1:27017/todos", {
   useNewUrlParser: true,
   useUnifiedTopology: true
