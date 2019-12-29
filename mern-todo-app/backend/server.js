@@ -20,8 +20,6 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-app.use("/todos", todoRoutes);
-
 todoRoutes.route("/").get((req, res) => {
   Todo.find((err, todos) => {
     if (err) {
@@ -50,10 +48,6 @@ todoRoutes.route("/add").post((req, res) => {
     .catch(err => {
       res.status(400).send("adding new todo failed");
     });
-
-  Todo.findById(id, (err, todo) => {
-    res.json(todo);
-  });
 });
 
 todoRoutes.route("/update/:id").post((req, res) => {
@@ -76,6 +70,8 @@ todoRoutes.route("/update/:id").post((req, res) => {
     }
   });
 });
+
+app.use("/todos", todoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
