@@ -21,7 +21,7 @@ class App extends Component {
               <img src="https://cdn.onlinewebfonts.com/svg/img_550709.png" width="30" height="30" alt="CodingTheSmartWay.com" />
             </a>
             <Link to="/" className="navbar-brand">
-              MERN-Stack Todo App
+              Memento
             </Link>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav mr-auto">
