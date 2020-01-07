@@ -4,9 +4,15 @@ import axios from "axios";
 
 const Todo = props => (
   <tr>
-    <td className={props.todo.todo_completed ? "completed" : ""}>{props.todo.todo_description}</td>
-    <td className={props.todo.todo_completed ? "completed" : ""}>{props.todo.todo_responsible}</td>
-    <td className={props.todo.todo_completed ? "completed" : ""}>{props.todo.todo_priority}</td>
+    <td className={props.todo.todo_completed ? "completed" : ""}>
+      {props.todo.todo_description}
+    </td>
+    <td className={props.todo.todo_completed ? "completed" : ""}>
+      {props.todo.todo_responsible}
+    </td>
+    <td className={props.todo.todo_completed ? "completed" : ""}>
+      {props.todo.todo_priority}
+    </td>
     <td>
       <Link to={`/edit/${props.todo._id}`}>Edit</Link>
     </td>
@@ -28,6 +34,17 @@ export default class TodoList extends Component {
         });
       })
       .catch(err => console.log(err));
+  }
+
+  componentDidUpdate() {
+    axios
+      .get("http://localhost:4000/todos/")
+      .then(res => {
+        this.setState({
+          todos: res.data
+        });
+      })
+      .catch(error => console.log(error));
   }
 
   todoList() {
