@@ -58,6 +58,7 @@ export default class EditTodo extends Component {
   }
 
   onSubmit(e) {
+
     e.preventDefault();
     const obj = {
       todo_description: this.state.todo_description,
@@ -149,9 +150,7 @@ export default class EditTodo extends Component {
               Completed
             </label>
           </div>
-
           <br />
-
           <div className="form-group">
             <input
               type="submit"
